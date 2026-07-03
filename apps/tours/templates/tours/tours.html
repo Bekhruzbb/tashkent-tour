@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tours.css' %}"/>
+{% endblock %}
+{% block title %}
+Tours page
+{% endblock %}
+{% block content %}
+  <div class="search">
+            <div class="icon">
+                <div class="search-text">
+                    <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                    <input type="text" placeholder="Lake Tahoe, New York"></input>
+                </div>
+            </div>
+            <div class="icon">
+                <div class="search-text">
+                    <ion-icon name="calendar-outline"  class="search-icon"></ion-icon>
+                    <input type="text" placeholder="Mon, 10.07 - Sun, 10.13"></input>
+                </div>
+            </div>
+            <div class="icon">
+                <div class="search-text">
+                    <ion-icon name="people-outline" class="search-icon" ></ion-icon>
+                    <input type="text" placeholder="2 adult - 0 children"></input>
+                </div>
+            </div>
+            <div class="btn">
+                <button class="search-paragraph">
+                        <input type="text" name="#" id="#" placeholder="Search">
+                    </button>
+            </div>
+        </div>
+
+  <section class="main-tours">
+            <div class="tour-category">
+                <img src="{% static 'img/93-lost-in-the-desert.png' %}" class="tour-map" alt="Map image">
+
+                <div class="property-type">
+                    <h1 class="property-title">Property type</h1>
+                    <div class="tags">
+                        <div class="tag">
+                            <a href="#" class="type"><p class="tag-text">All</p></a>
+                        </div>
+                        {% for house_type in house_types %}
+                        <div class="tag">
+                            <a href="{% url 'tours:category' house_type.slug%}" class="type"><p class="tag-text">{{house_type}}</p></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="budget">
+                        <h2 class="budget-text">Your budget</h2>
+                        <div class="budget-type">
+                            <div class="day">Per night</div>
+                            <div class="day">Entire stay</div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h3 class="price-title">Price, $</h3>
+                        <div class="price-type">
+                            <p class="price-paragraph">from</p>
+                            <p class="price-min">1</p>
+                            <p class="price-paragraph">to</p>
+                            <p class="price-max">1500+</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <h3 class="rating-title">Rating</h3>
+                        <p class="rating-category">All</p>
+                        <p class="rating-category">5 stars</p>
+                        <p class="rating-category">4 stars</p>
+                        <p class="rating-category">3 stars</p>
+                        <p class="rating-category">2 stars</p>
+                        <p class="rating-category">1 star</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tours">
+                {% for tour in tours %}
+                <div class="tour">
+                    <img src="{{tour.first_image.image.url}}" alt="Tour image" class="tour-img">
+                    <div class="stars">
+                        <ion-icon name="star-outline" class="tour-star"></ion-icon>
+                        <ion-icon name="star-outline" class="tour-star"></ion-icon>
+                        <ion-icon name="star-outline" class="tour-star"></ion-icon>
+                        <ion-icon name="star-outline" class="tour-star"></ion-icon>
+                        <ion-icon name="star-outline" class="tour-star"></ion-icon>
+                    </div>
+                    <div class="locations">
+                        <ion-icon name="location-outline" class="location"></ion-icon>
+                        <ion-icon name="bookmark-outline" class="saved"></ion-icon>
+                    </div>
+                    <h4 class="tour-title"><a href="{% url 'tours:tour-single' tour.slug %}" class="tour-link">{{tour.title}}</a></h4>
+                    <p class="tour-people">{{tour.numb_people}}</p>
+                    <div class="price" style="gap: 0">
+                        {% if tour.discount_percent > 0%}
+                        <p class="tour-price">${{tour.real_price}}</p>
+                        <p class="discount-price">${{ tour.discount_calculate }}</p>
+                        {% else %}
+                        <p class="price-actual" style="text-align: center; margin-bottom: 2rem">${{tour.real_price}}</p>
+                        {% endif %}
+                        <a href="{% url 'tours:category' tour.house_type.slug%}" class="tour-tag" style="text-align: center">
+                            {{tour.house_type}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+{% endblock %}

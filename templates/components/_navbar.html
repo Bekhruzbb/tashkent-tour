@@ -1,0 +1,33 @@
+{% load static %}
+<header class="header">
+        <img src="{% static 'img/travel-agency-logo-trip-logo-design-vector-illustration-2DAXK3E.jpg' %}"
+        alt="travel-agency-logo-trip-logo-design-vector-illustration-2DAXK3E"
+        class="logo">
+        <form class="account">
+            {% if request.user.is_authenticated %}
+            <p class="login-paragraph">
+                {% if request.user.profile_image %}
+                <img src="{{request.user.profile_image.url}}" alt="#" class="logo" style="width: 3rem; height: 4rem">
+                {% endif %}
+                <p style="margin-top:2rem; font-size: 1.4rem">{{request.user}}</p>
+                <a href="{% url 'users:logout' %}" style="margin-top: 2rem;
+                text-decoration:none; color: black;font-size: 1.4rem">Exit</a>
+            </p>
+            {% else %}
+            <p class="register-paragraph">
+
+                <p style="margin-top: 1rem; font-size: 1.2rem">Hello Guest</p>
+                <a href="{% url 'users:login' %}" class="login" style="font-size: 1.4rem">Login</a>
+                <a href="{% url 'users:registration' %}" class="register" style="font-size: 1.4rem">Register</a>
+                {% endif %}
+            </p>
+        </form>
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-list-item" href="{% url 'main:home' %}">Home</a></li>
+                <li><a class="main-nav-list-item" href="{% url 'tours:tours' %}">Tours</a></li>
+                <li><a class="main-nav-list-item" href="{% url 'blog:blog' %}">Articles</a></li>
+                <li><a class="main-nav-list-item" href="{% url 'main:about' %}">About</a></li>
+            </ul>
+        </nav>
+    </header>

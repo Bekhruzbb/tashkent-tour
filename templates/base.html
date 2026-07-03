@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+    {% include 'components/_head.html' %}
+        {% block head %}
+
+        {% endblock %}
+    </head>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    {% include 'components/_navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <footer class="section-footer">
+        <div class="tour-adverts">
+            <img src="{% static '/img/logo.jpg' %}"
+            alt="travel-agency-logo-trip-logo-design-vector-illustration-2DAXK3E"
+            class="logo-footer">
+        <p class="advert-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+             Itaque voluptatem temporibus ab sint.
+            <div class="icons">
+                <a href="#" class="icon-link">
+                    <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+                </a>
+                <a href="#" class="icon-link">
+                    <ion-icon name="logo-instagram"  class="social-icon"></ion-icon>
+                </a>
+                <a href="#" class="icon-link">
+                    <ion-icon name="logo-twitter"  class="social-icon"></ion-icon>
+                </a>
+                <a href="#" class="icon-link">
+                    <ion-icon name="logo-linkedin"  class="social-icon"></ion-icon>
+                </a>
+            </div>
+        </div>
+<!--        <div class="tour-links">-->
+<!--            <div class="link-1">-->
+<!--                <p class="resources-title">Resources</p>-->
+<!--                <ul class="resources">-->
+<!--                    <li class="resource"><a href="#" class="text">Download</a></li>-->
+<!--                    <li class="resource"><a href="#" class="text">Help Center</a></li>-->
+<!--                    <li class="resource"><a href="#" class="text">Guide Book</a></li>-->
+<!--                    <li class="resource"><a href="#" class="text">Add Directory</li></a>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="link-2">-->
+<!--                <p class="resources-title">Travellers</p>-->
+<!--                <ul class="resources">-->
+<!--                    <li class="resource"><a href="#" class="text">Why travellers</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">Enterprice</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">Customer Stories</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">Instagram posts</li></a>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="link-3">-->
+<!--                <p class="resources-title">Company</p>-->
+<!--                <ul class="company-details down">-->
+<!--                    <li class="resource"><a href="#" class="text">Travelling</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">About Tashkent Tour</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">Success</li></a>-->
+<!--                    <li class="resource"><a href="#" class="text">Information</li></a>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="link-4">-->
+<!--                <p class="resources-title">About us</p>-->
+<!--                <ul class="resources upper">-->
+<!--                    <li class="resource">9989999999</li>-->
+<!--                    <li class="resource">tashkent@tours.com</li>-->
+<!--                    <li class="resource">Uzbekistan, Tashkent, Yunusobod 17 district</li>-->
+
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+    </footer>
+</body>
+</main>
+<script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock %}
+{% block title %}
+Blog page
+{% endblock %}
+{% block content %}
+    <section class="main-articles">
+            <div class="main-article">
+<!--                <div class="article-1">-->
+<!--                    <a href="#">-->
+<!--                        <img src="{% static 'img/Cruise.jpg' %}" alt="#" class="img-main"/>-->
+<!--                    </a>-->
+<!--                    <h2 class="articles-title">-->
+<!--                        <a href="article-single.html" class="link-title">-->
+<!--                            The perfect travel seasons to go</a>-->
+<!--                    </h2>-->
+<!--                    <p class="author">Author: <span class="author-name">-->
+<!--                    Andy Allen</span></p>-->
+<!--                    <div class="tags">-->
+<!--                        <p class="tags-text">Tags:</p>-->
+<!--                        <p class="tag"><a href="#" class="tag-link">Newsletter</a></p>-->
+<!--                        <p class="tag"><a href="#" class="tag-link">Travel</a></p>-->
+<!--                        <p class="tag"><a href="#" class="tag-link">Hotel</a></p>-->
+<!--                        <p class="tag"><a href="#" class="tag-link">Nostalgia</a></p>-->
+<!--                        <p class="tag"><a href="#" class="tag-link">Custom</a></p>-->
+<!--                    </div>-->
+<!--                    <div class="categories">-->
+<!--                        <h5 class="category-title">Categories:</h5>-->
+<!--                        <div class="category"><a href="#" class="article-category">Tourism</a></div>-->
+<!--                        <div class="category"><a href="#"  class="article-category">Countries</a></div>-->
+<!--                    </div>-->
+<!--                    <div class="published">-->
+<!--                        <p class="published-text">Published date:</p>-->
+<!--                        <p class="published-date">2 March 2026</p>-->
+<!--                    </div>-->
+<!--                    <p class="articles-paragraph">-->
+<!--                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.-->
+<!--                        maiores, soluta doloremque sapiente dicta nam rem quasi-->
+<!--                        explicabo ut. Qui, pariatur repellendus!-->
+<!--                    </p>-->
+<!--                </div>-->
+                    <div class="top-articles">
+                        <h3 class="top-header" style="font-size: 3rem">Top articles</h3>
+                        <div class="articles" style="display: grid; grid-template-columns: 1fr 1fr;">
+                        {% for article in articles %}
+                        <div class="article-details" style="display: flex; margin-left: 4rem; margin-top: 4rem;">
+                            <p class="views" style="position: absolute; margin-top: -2rem; font-size: 1.4rem">
+                                Views - {{article.count_views}}</p>
+                            {% if article.photo %}
+                            <a href="{% url 'blog:article' article.slug%}" class="category"><img src="{{ article.photo.url }}"
+                            alt="#" class="img-small"></a>
+                            {% endif %}
+                            <div class="article-information">
+                            <h4 class="article-category" style="margin-bottom: 2rem"><a href="{% url 'blog:article' article.slug %}"
+                                                                                        class="category" style="font-size: 1.3rem; margin-left: 2rem; font-size: 2.4rem;">{{article.title}}</a></h4>
+                                <p class="article-category upper"><a href="{% url 'blog:category' category_slug=article.category.slug %}" style="text-decoration: none; font-size: 1.7rem; margin-left: 2rem">
+                                    {{article.category}}</a>
+                                </p>
+                                <p class="article-title" style="font-size: 1.5rem; max-width: 15rem; margin-top: 2.5rem; line-height: 1.5; font-weight: 500; letter-spacing: 0.5px; margin-left: 2rem;">
+                                    {{article.text}}</p>
+                            </div>
+                    </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section class="photo-gallery">
+    <h5 class="gallery-title">Photo-gallery</h5>
+    <div class="images">
+        {% for image in images %}
+        <img src="{{image.image.url}}" alt="Images" class="img-gallery">
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

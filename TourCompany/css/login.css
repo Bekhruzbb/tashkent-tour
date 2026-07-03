@@ -1,0 +1,123 @@
+/* ////////////////////// */
+/* GENERAL */
+/* ////////////////////// */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Inter", sans-serif;
+    color: #333;
+    line-height: 1;
+    font-weight: 400;
+}
+html{
+    font-size: 62.5%;
+}
+/* ////////////////////// */
+/* LOGIN SECTION */
+/* ////////////////////// */
+.image{
+    height: 50rem;
+    margin-left: 4rem;
+    background-image: url(/img/Map-cropped.jpg);
+    opacity: inherit 70%;
+}
+
+.logo{
+    color: #fff;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.logo-img{
+    height: 5rem;
+    padding-top: 3.4rem;
+}
+
+.login{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    /* padding: 4rem; */
+    gap: 30em;
+}
+.text{
+    margin-top: 33rem;
+    color:rgb(255, 255, 255);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    width: 29rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.author{
+    font-size: 1rem;
+}
+.author-name{
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.author-job{
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.login-form{
+    width: 30rem;
+    margin-top: 15rem;
+}
+.login-header{
+    letter-spacing: 0.5px;
+    font-weight: bold;
+   
+}
+.login-text{
+    color: #333;
+    width: 20rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-right: 3.2rem;
+}
+
+.submit{
+    margin-top: 1rem;
+    margin-left: 0.9rem;
+    background-color: bisque;
+    padding: 0.5rem;
+    width: 10rem;
+}
+
+.form-item{
+    padding-top: 1rem;
+    margin: 1rem;
+    background-color: rgba(250, 235, 215, 0.495);
+}
+
+.home-page:link,
+.home-page:visited{
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+.home-page:hover,
+.home-page:active{
+    color: rgba(211, 151, 0, 0.692)
+}
+
+@media(max-width: 300px){
+    .login{
+        gap: 10rem;
+    }
+}
+
+@media(max-width: 220px){
+    .login{
+        gap: 1rem;
+    }
+}

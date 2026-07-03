@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block title %}
+    Tour project
+    {% endblock %}
+    {% block content %}
+    <section class="hero-section">
+            <div class="hero">
+            <div class="hero-primary">
+                <h1 class="heading-primary">
+                    Visit 30+ countries you want,
+                    every single day</h1>
+                <p class="hero-description">Visit more than 30 countries in Latin
+                    America, Asia, Europe, Oceania and enjoy your time with
+                    cost-effective tickets and tours all over the world.
+                </p>
+                <a href="{% url 'tours:tours' %}" class="btn btn--full margin-right-sm">Book and travel</a>
+                <a href="{% url 'main:about' %}" class="btn btn--outline">Learn more &darr;</a>
+            </div>
+        </div>
+    </section>
+    <section class="section-how">
+        <div class="container">
+            <span class="subheading">
+                Booking flights
+            </span>
+            <h2 class="heading-secondary">
+                The booking benefits
+            </h2>
+        </div>
+
+        <div class="container grid grid--3">
+            {% for benefit in benefits %}
+            <div class="step-text-box" style="max-height: 40rem">
+                {% if benefit.image %}
+                <img src="{{ benefit.image.url }}" alt="Cruise" class="how-img" style="max-width: 35rem; text-align: center;
+                max-height: 20rem">
+                {% endif %}
+                    <h3 class="class-tertiary">
+                        {{benefit.title}}
+                    </h3>
+                    <p class="step-description">
+                        {{benefit.text}}
+                    </p>
+            </div>
+            {% endfor %}
+    </section>
+
+    <section class="section-tours">
+        <h2 class="tours-h2">From Uzbekistan Flight Booking Deals</h2>
+        <p class="tours-text">Get online & offline deals or call right away</p>
+        <div class="container grid grid--2 content-center mg-top">
+            {% for tour in tours %}
+            <div class="tour-1">
+                <div class="city-1">
+                    <div class="departure">
+                        <h5 class="town h-5">{{tour.get_home_city_name}}
+                        </h5>
+                        <p class="home-city">{{tour.home_country}}<br></p>
+                            <p class="depart-time">12:00 AM</p>
+                    </div>
+                    <div class="city-date">
+                        <div class="name-icon"><ion-icon name="airplane-outline" class="city-icon"></ion-icon></div>
+                        <div class="depart-date date--month">Feb 24 - March 25</div>
+                    </div>
+                    <div class="depart-city">
+                        <h5 class="town h-5">{{tour.get_away_city_name}}</h5>
+                        <p class="home-city">{{tour.away_country}}
+                            <br>
+                            <p class="depart-time">
+                            </p>12:00 PM</p>
+                    </div>
+                    <div class="depart-price">
+                        {% if tour.discount_percent %}
+                        <h5 class="price">${{tour.discount_calculate}}</h5>
+                        {% else %}:
+                        <h5 class="price">${{tour.real_price}}</h5>
+                        {% endif %}
+                        <a href="{% url 'tours:tour-single' tour.slug %} " class="book-now">Book now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="recommended-packages container">
+        <h4 class="package-h4">Recommended packages</h4>
+
+        <div class="recommended-tours">
+            {% for tour in tours %}
+            <div class="tour-one">
+                {% if tour.images %}
+                <img src="{{ tour.first_image.image.url }}" alt="#" class="recommended-img" style="width: 20rem; height: 16rem"/>
+                {% endif %}
+                <div class="recomended-tour-title">
+                <p class="destination">{{tour.away_country}}</p>
+                <p class="city"><ion-icon name="navigate-outline"></ion-icon>
+                    {{tour.away_country}}</p>
+                    {% if tour.discount_percent %}
+                <div class="recommended-price">${{tour.discount_calculate}}
+                    {% else %}
+                <div class="recommended-price">${{tour.real_price}}
+                    {% endif %}
+                    <a href="{% url 'tours:tour-single' tour.slug%}" class="Book-trip">Book trip</a>
+                </div>
+                <p class="tour-agency">
+                    <img src="{% static '/img/logo.jpg' %}"
+                    alt="travel-agency-logo-trip-logo-design-vector-illustration-2DAXK3E"
+                    class="logo agency">
+                    <span class="tour-span">The Tashkent tour agency</span></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <section class="client-reviews">
+        <h6 class="review-h6">Our client reviews</h6>
+        <p class="review-text">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Error mollitia earum aliquam non? Quaerat
+            repellendus at iure id accusantium a, minima ex veniam
+            dolore porro. Et quam placeat beatae nobis.</p>
+        <div class="reviews-details container grid--4">
+            {% for review in reviews %}
+            <div class="tour-reviews">
+                <div class="customer-details">
+                    {% if review.author_img %}
+                    <img src="{{ review.author_img.url }}"
+                    class="customer-photo" alt="Customer image"/>
+                    {% endif %}
+                    <div class="reviewer-name">{{review.name}}</div>
+                    <div class="reviewer-job">{{review.job_type}}</div>
+                </div>
+                <p class="reviewer-text">
+                    {{review.review_text}}
+                </p>
+                <div class="stars">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="travel-articles">
+        <p class="article-header" style="margin-bottom: 4rem; font-size: 3rem">Travel articles</p>
+             <div class="container grid grid--2" style="padding: 3rem">
+                 <div class="article-big" style="background-color: #d0eaff">
+                    <img src="{{first_article.photo.url}}" alt="Nature" class="img-nature">
+                    <div class="article-date">12 Jan 2025</div>
+                    <div class="article-title"><a href="{% url 'blog:blog' %}" class="btn-article">
+                        {{first_article.title}}
+                    </a>
+                  </div>
+                    <div class="article-text">
+                        <a href="{% url  'blog:blog' %}" class="btn-article">
+                        {{ first_article.text }}
+                        </a>
+                    </div>
+                    <div class="links"><a href="{% url 'blog:blog' %}" class="btn-article"
+                        >Read more</a></div>
+                 </div>
+                 <div class="article-small">
+                {% for article in articles %}
+                     <div class="article-1" style="background-color: #afcef5;">
+                         {% if article.photo %}
+                        <img src="{{ article.photo.url }}" alt="Bridge" class="img img-crop">
+                         {% endif %}
+                            <div class="article-title small"><a href="{% url 'blog:article' article.slug%}" class="btn-article"
+                                >{{article.title}}</a>
+                                <p class="date-article-small">
+                                    <a href="{% url 'blog:article' article.slug%}" class="btn-article">{{article.created_at|date:"d M Y"}}</a></p>
+                            </div>
+                        </div>
+                     {% endfor %}
+                </div>
+
+    </section>
+
+    <section class="newsletter">
+        <div class="our-newsletter">
+            <p class="letter-header">Our Newsletter</p>
+            <p class="letter-text">Subscribe to our newsletter for receiving news and
+                not miss important updates.
+            </p>
+        </div>
+        <div class="subscribe-link">
+            <div class="subscribe">
+                <form action="#" method="POST" >
+                    {% csrf_token %}
+                    {{form}}
+<!--                    <span class="subscribe-button">-->
+                    <input type="submit" class="subscribe-us">Subscribe</input>
+<!--                    </span>-->
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+

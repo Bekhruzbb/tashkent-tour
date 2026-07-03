@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+{% block title %}
+Registration page
+{% endblock %}
+{% block content %}
+<div class="register-main">
+    <div class="register">
+        <h1 class="register-header">Create an account</h1>
+        <p class="register-text">Join now and buy the tour packages around the world</p>
+        <form action="{% url 'users:register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ register_form }}
+            <button> register in </button>
+        </form>
+        <p class="go-back"><a href="{% url 'main:home' %}" class="home-page">Go back</a></p>
+    </div>
+    <img src="{% static 'img/Map-cropped.jpg' %}" alt="#" class="map-img">
+    </div>
+{% endblock %}

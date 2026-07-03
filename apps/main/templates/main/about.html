@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block title %}
+About page
+{% endblock %}
+
+{% block content %}
+        <div class="about">
+            <h1 class="header-primary">
+            We bring a wealth of experience from a
+            wide range of backgrounds
+        </h1>
+        <p class="text">
+            Our philosophy is simple: hire great people and give them
+            the resources and support to do their best work.
+        </p>
+        </div>
+        <div class="photos">
+            <div class="author-1">
+                <img src="{% static 'img/author-1.jpg' %}" alt="Person-1" class="people">
+                <h2 class="author-name">Lisa Brown</h2>
+                <p class="author-job">UX/UI Designer</p>
+            </div>
+            <div class="author-2">
+                <img src="{% static 'img/author-2.jpg' %}" alt="Person-1" class="people">
+                <h2 class="author-name">Matthew Brown</h2>
+                <p class="author-job">Sales Manager</p>
+            </div>
+            <div class="author-3">
+                <img src="{% static 'img/author-3.jpg' %}" alt="Person-1 big" class="people big">
+                <h2 class="author-name">John Brown</h2>
+                <p class="author-job">Marketing Manager</p>
+            </div>
+            <div class="author-4">
+                <img src="{% static 'img/author-4.jpg' %}" alt="Person-1 big" class="people big">
+                <h2 class="author-name">Bekzod Muminjonov</h2>
+                <p class="author-job">Director of tour agency</p>
+            </div>
+        </div>
+        <a href="index.html" class="home-page">Return to home</a>
+ {% endblock %}

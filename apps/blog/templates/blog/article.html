@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/article-single.css' %}">
+{% endblock %}
+{% block title %}
+Article page
+{% endblock %}
+{% block content %}
+    <section class="article">
+            <div class="article-created-at">
+                <img src="{% static 'img/toa-heftiba-O3ymvT7Wf9U-unsplash.jpg' %}" alt="#" class="author-img">
+                <p class="author">{{article.author}}</p>
+                <p class="date"><ion-icon name="calendar-number-outline" class="icon-calendar">
+                </ion-icon>{{article.created_at|date:'M d, Y'}}.</p>
+                <p class="read-time"><ion-icon name="time-outline" class="icon-read"
+                    ></ion-icon>3 min read</p>
+            </div>
+            <div class="article-main">
+                <h1 class="article-title">
+                    {{article.title}}
+                </h1>
+                <p class="article-text">
+                    {{article.text}}
+                </p>
+                {% if article.photo %}
+                <img src="{{article.photo.url}}" alt="Argentine" class="article-img">
+                {% endif %}
+            </div>
+            <div class="category-article">
+                <h2 class="category">Categories:</h2>
+                <div class="categories">
+                    <p class="category-1"><a href="{% url 'blog:category' article.category.slug %}" class="category-link">{{article.category}}</a></p>
+                </div>
+            </div>
+        </section>
+    {% if request.user.is_authenticated %}
+    <section class="blog-comments">
+        <h3 class="comments-header container">
+            Blog comments ({{article.comments.count}})
+        </h3>
+        <div class="tags">
+            <h4 class="blog-tags">Tags:</h4>
+            <p class="tag-1 tag"><a href="{% url 'blog:tag' article.tag.slug %}" class="tag-link">{{article.tag}}</a></p>
+            <div class="social">
+                <div class="social-text">Social:</div>
+                <a href="#"><ion-icon name="logo-facebook" class="logo-icon"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram" class="logo-icon"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-linkedin" class="logo-icon"></ion-icon></a>
+            </div>
+        </div>
+        <div class="comments">
+            {% for comment in article.comments.all %}
+            <div class="author-details">
+                {% if comment.author.profile_image %}
+                <img src="{{ comment.author.profile_image }}" alt="Comments author img" class="author-img">
+                {% endif %}
+                <div class="comment-details">
+                    <p class="author-name">{{comment.user.username}}</p>
+                    <p class="comment-date">{{comment.created_at|date:'d m Y'}}</p>
+                </div>
+            </div>
+            <p class="comment-text">
+                {{comment.text}}
+            </p>
+            {% endfor %}
+        </div>
+    <div class="reply-to-email">
+        <h5 class="reply">Leave a Reply</h5>
+        <p class="reply-paragraph">
+            Provide clear contact information, including phone number,
+            email and address.
+        </p>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit">
+        </form>
+    </div>
+    </section>
+    {% endif %}
+    <section class="blogs">
+        <p class="blogs-title">More Blogs</p>
+        <div class="other-blogs" style="display: grid; grid-template-columns: 0.5fr 0.5fr">
+            {% for article in articles %}
+            <div class="blog first" style="display: block; margin-bottom: 4.5rem">
+                {% if article.photo %}
+                <img src="{{article.photo.url}}" alt="#" class="blog img">
+                {% endif %}
+                <div class="blog-tag">
+                    <a href="{% url 'blog:tag' article.tag.slug %}" class="tag-text">{{article.tag}}</a>
+                    <p class="blog-read-time"><ion-icon name="time-outline" class="icon-read">
+                    </ion-icon>3 min read</p>
+                </div>
+                <div class="about-blog" style="margin-bottom: 1rem">
+                    <p class="title-blog"><a href="{% url 'blog:article' article.slug%}" style="text-decoration: none; color: #333; line-height: 1.2; letter-spacing: 0.5px">
+                    {{article.title}}
+                    </a>
+                    </p>
+                    <p class="blog-text">
+                    {{article.text}}
+                </div>
+                <div class="blog-details">
+                    {% if article.author.profile_image %}
+                    <img src="{{ article.author.profile_image.url }}" alt="Profile image" style="width: 4rem; height: 4rem">
+                    {% endif %}
+                <p class="author-blog">{{article.author}}</p>
+                <p class="date mg-right"><ion-icon name="calendar-number-outline" class="icon-calendar">
+                </ion-icon>{{article.created_at|date:'M d, Y'}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

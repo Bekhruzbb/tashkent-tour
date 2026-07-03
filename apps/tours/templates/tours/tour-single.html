@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tour-single.css' %}">
+{% endblock %}
+{% block title %}
+Tour page
+{% endblock %}
+{% block content %}
+<div class="return-home">
+            <p class="home"><a href="{% url 'main:home' %}" class="home-link">Home > 1-Day Niagara Falls Tour</a></p>
+</div>
+<div class="tour-main">
+            <h1 class="tour-title">
+                {{tour.title}}
+            </h1>
+            <div class="review">
+                <ion-icon name="star-outline" class="star-review"></ion-icon>
+                <p class="review-numbers">(0 reviews)</p>
+                <p class="location-text">{{tour.title}}</p>
+            </div>
+            <div class="images">
+                <img src="{{tour.first_image.image.url}}" alt="tour-img" class="tour-img">
+                <div class="image">
+                    <div class="image-smalls">
+                    {% for img in tour.images.all %}
+                        <img src="{{img.image.url}}" alt="Brazil img" class="img-small">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        <div class="tour-details">
+            <div class="tour-overview">
+                <h2 class="overview">Overview</h2>
+                <div class="overview-details">
+                <div class="overview-detail"><ion-icon name="time-outline" class="overview-icon"></ion-icon>
+                    <p class="overview-text">{{tour.overview.duration}}</p></div>
+                <div class="overview-detail"><ion-icon name="today-outline" class="overview-icon"></ion-icon>
+                    <p class="overview-text">{{tour.overview.tour_type}}</p></div>
+                <div class="overview-detail"><ion-icon name="people-outline" class="overview-icon"></ion-icon>
+                    <p class="overview-text">{{tour.numb_people}}</p></div>
+                <div class="overview-detail"><ion-icon name="globe-outline" class="overview-icon"></ion-icon>
+                    <p class="overview-text">{{tour.overview.language}}</p></div>
+            </div>
+            <p class="tour-text">
+            {{tour.overview.text}}
+            </p>
+            <div class="highlights">
+                <h3 class="highlights-title">Highlights</h3>
+                <div class="highlights-text">
+                    <div class="benefits"><ion-icon name="checkmark-circle-outline" class="highlight-icon"></ion-icon>
+                        <p class="highlight-text">{{tour.highlights.text}}</p></div>
+                </div>
+                <div class="faq">
+                    <h4 class="faq-title">FAQ</h4>
+                    {% for faq in faqs %}
+                    <details>
+                        <summary>
+                            {{faq.question}}
+                        </summary>
+                        <p class="answer">{{faq.answer}}</p>
+                    </details>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="price-details">
+            <p class="price-title">from </p>
+            <p class="price">$250 /  <span class="price-person">person</span></p>
+            <div class="book">
+                <div class="date">
+                    <p class="book-date">Date</p>
+                    <p class="book-date">Jun 17, 2026</p>
+                </div>
+                <div class="people">
+                    <p class="book-people">Infant (Age 0-2)</p>
+                        <ion-icon name="remove-circle-outline" class="icon-date left"></ion-icon>
+                        <p>0</p>
+                        <ion-icon name="add-circle-outline" class="icon-date"></ion-icon>
+                </div>
+                <div class="people">
+                    <p class="book-people">Children (Age 3-12)</p>
+                        <ion-icon name="remove-circle-outline" class="icon-date"></ion-icon>
+                        <p>0</p>
+                        <ion-icon name="add-circle-outline" class="icon-date"></ion-icon>
+                </div>
+                <div class="people">
+                    <p class="book-people">Adult (Age 13+)</p>
+                        <ion-icon name="remove-circle-outline" class="icon-date left"></ion-icon>
+                        <p>0</p>
+                        <ion-icon name="add-circle-outline" class="icon-date"></ion-icon>
+                </div>
+                <p class="check-avail">Check availability</p>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

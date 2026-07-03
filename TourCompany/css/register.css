@@ -1,0 +1,89 @@
+/* ////////////////// */
+/* REGISTER  */
+/* ///////////////// */
+
+/* ////////////////// */
+/* GENERAL  */
+/* ///////////////// */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: sans-serif;
+    color: #333;
+    line-height: 1;
+    font-weight: 400;
+}
+.map-img{
+    height: 40rem;
+}
+
+.icon.img{
+    height: 4rem;
+    margin: 2rem;
+}
+.icon-text{
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+form{
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+form input{
+    padding: 0.7rem;
+    width: 40rem;
+}
+.go-back{
+    margin-top: 2rem;
+}
+
+/* ////////////////// */
+/* REGISTER MAIN  */
+/* ///////////////// */
+.register-main{
+    padding: 6rem;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    padding-right: 1.5rem;
+}
+.register-header{
+    font-size: 3rem;
+    letter-spacing: 0.5px;
+}
+.icon{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.home-page{
+    color: #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+.register-text{
+    margin-top: 2rem;
+    letter-spacing: 0.5px;
+}
+
+/* ////////////////// */
+/* MEDIA QUERIES REGISTER */
+/* ///////////////// */
+@media(max-width: 1240px){
+
+    .map-img{
+        width: 33rem;
+        padding: 3rem;
+        margin-top: 10rem;
+        height: 33rem;
+    }
+    
+}
