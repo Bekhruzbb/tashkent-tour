@@ -4,3 +4,5 @@ drf-yasg==1.21.15
 psycopg2-binary==2.9.12
 pillow==12.2.0
 environs==14.1.0
+djangorestframework==3.17.1
+djoser==2.3.1
