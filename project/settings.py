@@ -14,7 +14,7 @@ from pathlib import Path
 import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BASE_DIR / 'apps'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 import environs
@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.blog.apps.BlogConfig',
-    'apps.common.apps.CommonConfig',
-    'apps.main.apps.MainConfig',
-    'apps.tours.apps.ToursConfig',
-    'apps.users.apps.UsersConfig',
+    'apps.blog',
+    'apps.common',
+    'apps.main',
+    'apps.tours',
+    'apps.users',
     "rest_framework",
     "tourApi",
     "rest_framework.authtoken",
