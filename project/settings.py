@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 if os.environ.get('POSTGRES_URL'):
     DATABASES = {
-        'default': env.db('POSTGRES_URL')
+        'default':dj_database_url.parse('POSTGRES_URL')
     }
 else:
     DATABASES = {
