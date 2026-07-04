@@ -90,17 +90,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'PASSWORD': env.str("PG_PASSWORD", default='123456'),
-        "NAME": env.str("PG_NAME", default='tour_project'),
-        "HOST": env.str("PG_HOST", default='localhost'),
-        "PORT": env.str("PG_PORT", default='5432'),
-        "USER": env.str("PG_USER", default='user')
+if os.environ.get('POSTGRES_URL'):
+    DATABASES = {
+        'default': env.db('POSTGRES_URL')
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'PASSWORD': env.str("PG_PASSWORD", default='123456'),
+            "NAME": env.str("PG_NAME", default='tour_project'),
+            "HOST": env.str("PG_HOST", default='localhost'),
+            "PORT": env.str("PG_PORT", default='5432'),
+            "USER": env.str("PG_USER", default='user')
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
