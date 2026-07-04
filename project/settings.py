@@ -27,9 +27,9 @@ import environs
 env = environs.Env()
 env.read_env()
 
-DEBUG = env.bool("DEBUG")
+DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[".vercel.app", "127.0.0.1", "localhost"])
 
 # Application definition
 
