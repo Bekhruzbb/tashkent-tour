@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,8 +23,9 @@ from environs import Env
 env = Env()
 env.read_env()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('django-insecure-=90ex_v01ge!tjxolp+9szwwty+u%xn^e)^cdof3#7r1%cci^!', default="django-insecure-fallback-key-for-builds-12345")
-print(env.str("PG_PASSWORD"))
+SECRET_KEY = env.str('django-insecure-=90ex_v01ge!tjxolp+9szwwty+u%xn^e)^cdof3#7r1%cci^!',
+                     default="django-insecure-fallback-key-for-builds-12345")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
