@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.main.apps.MainConfig',
     'apps.tours.apps.ToursConfig',
     'apps.users.apps.UsersConfig',
+    'tourApi',
     "rest_framework",
     "rest_framework.authtoken",
     'djoser',

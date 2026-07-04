@@ -26,7 +26,7 @@ urlpatterns = [
     path('blog/', include('apps.blog.urls')),
     path('tours/', include('apps.tours.urls')),
     path('users/', include('apps.users.urls')),
-    # path("", include("tourApi.urls")),
+    path("", include("tourApi.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("auth/", include("djoser.urls")),
     # path("auth/", include("djoser.urls.authtoken")),
