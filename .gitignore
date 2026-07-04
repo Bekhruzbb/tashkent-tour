@@ -65,13 +65,15 @@ db.sqlite3-journal
 # Flask stuff:
 instance/
 .webassets-cache
-
+staticfiles
+*.pyc
 # Scrapy stuff:
 .scrapy
 /venv
 # Sphinx documentation
 docs/_build/
-/static
+static
+.idea/
 # PyBuilder
 .pybuilder/
 target/
