@@ -45,11 +45,11 @@ INSTALLED_APPS = [
     'apps.main',
     'apps.tours',
     'apps.users',
-    "rest_framework",
-    "tourApi",
-    "rest_framework.authtoken",
-    'djoser',
-    'drf_yasg'
+    # "rest_framework",
+    # "tourApi",
+    # "rest_framework.authtoken",
+    # 'djoser',
+    # 'drf_yasg'
 ]
 
 REST_FRAMEWORK = {
