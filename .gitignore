@@ -75,7 +75,7 @@ docs/_build/
 # PyBuilder
 .pybuilder/
 target/
-/tourApi
+
 # Jupyter Notebook
 .ipynb_checkpoints
 static
