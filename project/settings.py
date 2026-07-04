@@ -93,15 +93,28 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 prod_db_url = os.environ.get('POSTGRES_URL') or os.getenv('POSTGRES_URL')
-if prod_db_url:
+
+if os.environ.get('POSTGRES_HOST'):
     DATABASES = {
-        'default': dj_database_url.parse(prod_db_url)
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DATABASE'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': os.environ.get('POSTGRES_HOST'),
+            'PORT': '5432',
+        }
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse(
-            'postgresql://postgres.szamjblppsucfazywkky:998512814mm!@aws-0-us-east-1.pooler.supabase.com:6543/postgres'
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env.str("PG_NAME", default="tour_project"),
+            'USER': env.str("PG_USER", default="user"),
+            'PASSWORD': env.str("PG_PASSWORD", default="123456"),
+            'HOST': env.str("PG_HOST", default="localhost"),
+            'PORT': env.str("PG_PORT", default="5432"),
+        }
     }
 # else:
 #     DATABASES = {
