@@ -100,11 +100,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'PASSWORD': env.str("PG_PASSWORD", default='123456'),
-            "NAME": env.str("PG_NAME", default='tour_project'),
-            "HOST": env.str("PG_HOST", default='localhost'),
-            "PORT": env.str("PG_PORT", default='5432'),
-            "USER": env.str("PG_USER", default='user')
+            'PASSWORD': os.environ.get("POSTGRES_PASSWORD") or env.str("PG_PASSWORD", default='123456'),
+            "NAME": os.environ.get("POSTGRES_DATABASE") or env.str("PG_NAME", default='tour_project'),
+            "HOST": os.environ.get("POSTGRES_HOST") or env.str("PG_HOST", default='localhost'),
+            "PORT": os.environ.get("POSTGRES_PORT") or env.str("PG_PORT", default='5432'),
+            "USER": os.environ.get("POSTGRES_USER") or env.str("PG_USER", default='user')
         }
     }
 
