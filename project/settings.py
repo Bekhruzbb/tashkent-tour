@@ -104,9 +104,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     'default': dj_database_url.parse(os.environ["POSTGRES_URL"])
 #     }
 DATABASE_URL = env.str("DATABASE_URL")
-print(DATABASE_URL)
+
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': dj_database_url.config(default=DATABASE_URL, ssl_require=True, conn_max_age=0)
     }
 # print(DATABASES)
 # else:
