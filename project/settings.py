@@ -94,28 +94,26 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 # DATABASE_URL = os.environ.get("DATABASE_URL")
+DB_NAME = os.environ.get('POSTGRES_DATABASE', 'postgres')
+DB_USER = os.environ.get('POSTGRES_USER', 'postgres.szamjblppsucfazywkky')
+DB_PASSWORD = os.environ.get('POSTGRES_PASSWORD', '998512814mm!')
+DB_HOST = os.environ.get('POSTGRES_HOST', 'aws-0-us-east-1.pooler.supabase.com')
+DB_PORT = os.environ.get('POSTGRES_PORT', '6543')
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.szamjblppsucfazywkky',
-        'PASSWORD': '998512814mm!',
-        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
-        'PORT': '6543',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
         'OPTIONS': {
             'sslmode': 'require',
         },
     }
 }
-
-if os.environ.get("DATABASE_URL"):
-    DATABASES["default"] = dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
-
 
 # DATABASES = {
 #     'default': {
