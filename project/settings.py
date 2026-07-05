@@ -100,6 +100,7 @@ DB_PASSWORD = os.environ.get('POSTGRES_PASSWORD', '998512814mm!')
 DB_HOST = os.environ.get('POSTGRES_HOST', 'aws-0-us-east-1.pooler.supabase.com')
 DB_PORT = os.environ.get('POSTGRES_PORT', '6543')
 
+BASE_DB_NAME = os.environ.get('POSTGRES_DATABASE', 'postgres')
 
 DATABASES = {
     'default': {
