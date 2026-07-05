@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     'djoser',
-    'drf_yasg'
+    'drf_yasg',
+    'storages'
 ]
 
 REST_FRAMEWORK = {
@@ -113,7 +114,7 @@ DATABASES = {
         ssl_require=True,
     )
 }
-print(DATABASES)
+
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -147,9 +148,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+#
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -161,6 +162,17 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = "8538c9e3599b691f5c30bacba77f03b9"
+AWS_SECRET_ACCESS_KEY = "6629ab3778041661747bacb1096c85b44c9b78d185572048db10e7fb22774894"
+AWS_STORAGE_BUCKET_NAME = "media"
+AWS_S3_ENDPOINT_URL = "https://szamjblppsucfazywkky.supabase.co/storage/v1/s3"
+AWS_S3_REGION_NAME = "us-east-1"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = "public-read"
+
 
 from datetime import timedelta
 
