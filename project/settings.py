@@ -103,18 +103,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # DATABASES = {
 #     'default': dj_database_url.parse(os.environ["POSTGRES_URL"])
 #     }
-
+DATABASE_URL = env.str("DATABASE_URL")
+print(DATABASE_URL)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str("PG_NAME", default="tour_project"),
-        'USER': env.str("PG_USER", default="user"),
-        'PASSWORD': env.str("PG_PASSWORD"),
-        'HOST': env.str("PG_HOST", default="localhost"),
-        'PORT': env.str("PG_PORT", default="5432"),
+    'default': dj_database_url.parse(DATABASE_URL)
     }
-    }
-print(DATABASES)
+# print(DATABASES)
 # else:
 #     DATABASES = {
 #         'default': {
