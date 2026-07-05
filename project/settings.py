@@ -106,10 +106,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASE_CONFIG_URL = env.str("DATABASE_URL")
 
 DATABASES = {
-    'default': dj_database_url.config(default=DATABASE_CONFIG_URL, ssl_require=True, conn_max_age=0)
+    'default': dj_database_url.config(default=DATABASE_CONFIG_URL, ssl_require=True, conn_max_age=60)
     }
 
-# print(DATABASES)
 # else:
 #     DATABASES = {
 #         'default': {
