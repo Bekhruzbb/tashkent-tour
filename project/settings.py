@@ -103,17 +103,17 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # DATABASES = {
 #     'default': dj_database_url.parse(os.environ["POSTGRES_URL"])
 #     }
-DATABASE_CONFIG_URL = env.str("DATABASE_URL")
+DATABASE_CONFIG_URL = os.getenv("DATABASE_URL")
 
 
 DATABASES = {
-    "default": dj_database_url.parse(
-        env.str("DATABASE_URL"),
-        conn_max_age=60,
+    "default": dj_database_url.config(
+        default=DATABASE_CONFIG_URL,
+        conn_max_age=0,
         ssl_require=True,
     )
 }
-
+print(DATABASES)
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
