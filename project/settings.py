@@ -32,7 +32,7 @@ SECRET_KEY = env.str('django-insecure-=90ex_v01ge!tjxolp+9szwwty+u%xn^e)^cdof3#7
 
 DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['*'])
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS",'.vercel.app',  default=['*'])
 
 # Application definition
 
