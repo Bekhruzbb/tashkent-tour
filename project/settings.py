@@ -165,13 +165,14 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-AWS_ACCESS_KEY_ID = "8538c9e3599b691f5c30bacba77f03b9"
-AWS_SECRET_ACCESS_KEY = "6629ab3778041661747bacb1096c85b44c9b78d185572048db10e7fb22774894"
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = "media"
 AWS_S3_ENDPOINT_URL = "https://szamjblppsucfazywkky.supabase.co/storage/v1/s3"
 AWS_S3_REGION_NAME = "us-east-1"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = "public-read"
+
 
 
 from datetime import timedelta
