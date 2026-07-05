@@ -107,20 +107,13 @@ DATABASE_CONFIG_URL = env.str("DATABASE_URL")
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'PASSWORD':  env.str("PG_PASSWORD", default='123456'),
-        "NAME":  env.str("PG_NAME", default='tour_project'),
-        "HOST":  env.str("PG_HOST", default='localhost'),
-        "PORT":  env.int("PG_PORT", default='5432'),
-        "USER":  env.str("PG_USER", default='user'),
-        'OPTIONS': {
-            'sslmode': 'require',
-            'options': '-c search_path=public',
-        }
-        }
-    }
-
+    "default": dj_database_url.parse(
+        env.str("DATABASE_URL"),
+        conn_max_age=60,
+        ssl_require=True,
+    )
+}
+print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
