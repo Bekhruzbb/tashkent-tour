@@ -142,13 +142,13 @@ TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 
 USE_TZ = True
-print(os.environ)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-#
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -165,11 +165,15 @@ STATICFILES_DIRS = [
 
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = "media"
+AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_ENDPOINT_URL = "https://szamjblppsucfazywkky.supabase.co/storage/v1/s3"
 AWS_S3_REGION_NAME = "us-east-1"
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = "public-read"
+# AWS_DEFAULT_ACL = "public-read"
+
+AWS_DEFAULT_ACL = None
+AWS_QUERYSTRING_AUTH = False
+MEDIA_URL = f"https://szamjblppsucfazywkky.supabase.co/storage/v1/object/public/{AWS_STORAGE_BUCKET_NAME}/"
 
 STORAGES = {
     "default": {
