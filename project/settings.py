@@ -103,7 +103,7 @@ DB_PORT = os.environ.get('PG_PORT', '5432')
 BASE_DB_NAME = os.environ.get('POSTGRES_DATABASE', 'postgres')
 
 DATABASES = {
-    'default': {
+    'default': {dj_database_url.parse(os.environ["POSTGRES_URL_NON_POOLING_DIRECT"])},
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': DB_NAME,
         'USER': DB_USER,
