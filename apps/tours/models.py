@@ -14,7 +14,7 @@ class HouseType(BaseModel):
         Treehouse = "Treehouse", "treehouse"
         Boat = "Boat", "boat"
 
-    name = models.CharField(choices=HouseChoices.choices, null=True, blank=True)
+    name = models.CharField(choices=HouseChoices.choices, null=True, blank=True, max_length=60)
     slug = models.SlugField(unique=True, verbose_name="Ссылка для типа дома", null=True)
 
     def __str__(self):

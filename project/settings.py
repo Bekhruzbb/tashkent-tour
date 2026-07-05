@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 from environs import Env
-
+load_dotenv()
 env = Env()
 env.read_env()
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -92,12 +93,20 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# DATABASE_URL = os.environ.get("DATABASE_URL")
+
 DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ["POSTGRES_URL"],
-        conn_max_age=600,
-        ssl_require=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.szamjblppsucfazywkky',
+        'PASSWORD': '998512814mm!',
+        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+        'PORT': '6543',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 # DATABASES = {
 #     'default': {
@@ -120,7 +129,6 @@ DATABASES = {
 #             "USER":  env.str("PG_USER", default='user')
 #         }
 #     }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
