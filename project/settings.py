@@ -173,15 +173,17 @@ AWS_S3_FILE_OVERWRITE = False
 
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
+
 MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/"
 
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
         "OPTIONS": {
-            "bucket_name": "static",
+            "bucket_name": AWS_STORAGE_BUCKET_NAME,
+            "endpoint_url": AWS_S3_ENDPOINT_URL,
+            "region_name": AWS_S3_REGION_NAME
         },
     },
     "staticfiles": {
