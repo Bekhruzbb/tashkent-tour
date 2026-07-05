@@ -106,8 +106,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASE_CONFIG_URL = env.str("DATABASE_URL")
 
 DATABASES = {
-    'default': dj_database_url.config(default=DATABASE_CONFIG_URL, ssl_require=True, conn_max_age=60)
+    'default': dj_database_url.config(default=DATABASE_CONFIG_URL, ssl_require=True, conn_max_age=0)
     }
+DATABASES["default"]["PORT"] = 6543
+DATABASES["default"]["HOST"] = "aws-0-us-east-1.pooler.supabase.com"
+DATABASES["default"]["USER"] = "postgres.szamjblppsucfazywkky"
 
 # else:
 #     DATABASES = {
