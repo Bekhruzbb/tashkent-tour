@@ -114,6 +114,7 @@ DATABASES = {
         'PORT': env.str("PG_PORT", default="5432"),
     }
     }
+print(DATABASES)
 # else:
 #     DATABASES = {
 #         'default': {
