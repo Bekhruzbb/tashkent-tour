@@ -113,7 +113,11 @@ DATABASES = {
         "NAME":  env.str("PG_NAME", default='tour_project'),
         "HOST":  env.str("PG_HOST", default='localhost'),
         "PORT":  env.int("PG_PORT", default='5432'),
-        "USER":  env.str("PG_USER", default='user')
+        "USER":  env.str("PG_USER", default='user'),
+        'OPTIONS': {
+            'sslmode': 'require',
+            'options': '-c search_path=public',
+        }
         }
     }
 
