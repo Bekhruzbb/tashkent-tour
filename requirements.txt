@@ -8,6 +8,7 @@ charset-normalizer==3.4.7
 cloudinary==1.45.0
 cryptography==49.0.0
 defusedxml==0.7.1
+
 dj-config-url==0.1.1
 dj-database-url==3.1.2
 Django==5.2.15
@@ -16,7 +17,7 @@ django-filter==25.2
 django-storages==1.14.6
 djangorestframework==3.17.1
 djangorestframework_simplejwt==5.5.1
-djoser==2.3.3
+
 drf-yasg==1.21.15
 environs==15.0.1
 idna==3.18
