@@ -32,7 +32,7 @@ SECRET_KEY = env.str('django-insecure-=90ex_v01ge!tjxolp+9szwwty+u%xn^e)^cdof3#7
 
 DEBUG = env.bool("DEBUG", default=True)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS",'.vercel.app',  default=['*'])
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     'djoser',
     'drf_yasg',
-    'storages'
 ]
 
 REST_FRAMEWORK = {
@@ -93,26 +92,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-# DATABASE_URL = os.environ.get("DATABASE_URL")
-# DB_NAME = os.environ.get('PG_NAME', 'postgres')
-# DB_USER = os.environ.get('PG_USER', 'postgres')
-# DB_PASSWORD = os.environ.get('PG_PASSWORD')
-# DB_HOST = os.environ.get('PG_HOST')
-# DB_PORT = os.environ.get('PG_PORT', '5432')
-#
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ["POSTGRES_URL"])
-#     }
-DATABASE_CONFIG_URL = os.getenv("DATABASE_URL")
-
-
 DATABASES = {
-    "default": dj_database_url.config(
-        default=DATABASE_CONFIG_URL,
-        conn_max_age=0,
-        ssl_require=True,
-    )
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": env.str("PG_NAME"),
+        "PASSWORD": env.str("PG_PASSWORD"),
+        "USER": env.str("PG_USER"),
+        "PORT": env.int("PG_PORT"),
+        "HOST": env.str("PG_HOST")
+    }
 }
 
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -149,6 +137,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -161,35 +151,6 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-
-
-AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = "https://szamjblppsucfazywkky.supabase.co/storage/v1/s3"
-AWS_S3_REGION_NAME = "us-east-1"
-AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = "public-read"
-
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False
-
-MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/"
-
-
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
-        "OPTIONS": {
-            "bucket_name": AWS_STORAGE_BUCKET_NAME,
-            "endpoint_url": AWS_S3_ENDPOINT_URL,
-            "region_name": AWS_S3_REGION_NAME
-        },
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
 
 from datetime import timedelta
 

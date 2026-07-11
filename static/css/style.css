@@ -2,24 +2,22 @@
 /* HERO SECTION */
 /* ////////////////////// */
 .hero-section{
-    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.05)),
-    url("/img/Hawai-cropped.jpg");
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.15)), url("../img/Hawai.jpg");
     background-size: cover;
     height: 52rem;
     width: 100%;
 }
-
 .hero{
     display: grid;
-    grid-template-columns: 0.5fr;
+    grid-template-columns: 0.8fr;
     margin: 0 auto;
     align-items: center;
     padding: 0 3.2rem;
-    padding: 4.8rem 0 9.6rem 0;
+    padding: 4.8rem 0 9.6rem 7rem;
 }
 .hero-primary{
     margin-top: 70px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 .heading-primary{
@@ -68,9 +66,13 @@
 .account{
     display: flex;
     gap: 2rem;
-    margin-right: 45rem;
+    margin-right: 25rem;
 }
-
+.hero-links{
+    padding: 2rem;
+    /* max-width: 320rem; */
+    width: 50rem;
+}
 .login-paragraph,
 .register-paragraph{
     border-radius: 1.2rem;
@@ -171,7 +173,9 @@
 }
 .step-description{
     font-size: 1.2rem;
-    line-height: 1.4;
+    max-width: 30rem;
+    text-align: center;
+    line-height: 1.8;
     margin-bottom: 2.2rem;
 }
 .mgn-down{    
@@ -217,6 +221,7 @@
     height: 8rem;
     background-color: #c9c4c065;
     margin: 1.2rem 1.2rem;
+    margin-left: 4rem
 }
 .town.h-5 {
     font-size: 1.5rem;
@@ -284,15 +289,15 @@
 
 .client-reviews{
     margin-top: 5.2rem;
-    width: 120rem;
+    width: 100rem;
     background-color: antiquewhite;
     padding: 5rem;
+    margin-left: 4rem;
 }
 .review-h6{
     font-size: 3.2rem;
     color: #333;
     padding-top: 30px;
-    margin-left: 15.9rem;
 }
 
 .reviews-details.container.grid--4{
@@ -302,11 +307,16 @@
     gap: 4rem;
 }
 
+.reviews-details.container {
+    padding: 0;
+    margin: 0;
+    width: 90rem
+}
+
 .review-text{
     font-size: 1.1rem;
     width: 60rem;
     line-height: 1.5;
-    margin-left: 199px;
     margin-top: 1.4rem;
 }
 
@@ -350,6 +360,8 @@
 .travel-articles{
     margin-top: 7rem;
     background-color: #4e94d241;
+    width: 98rem;
+    margin-left: 5rem;
 }
 .article-header{
     padding-top: 5rem;
@@ -408,6 +420,7 @@
     display: flex;
     background-color: rgba(197, 232, 191, 0.484);
     box-shadow: 0px 0px 0px 1px #2cec1e;
+    width: 32rem;
 
 }
 .article-2{
@@ -448,9 +461,11 @@
 /* ////////////////////// */
 
 .recommended-packages.container{
-    padding: 6rem 4.5rem;
+    padding: 6rem 5.5rem;
     background-color: rgba(241, 160, 146, 0.37);
     margin-top: 6.2rem;
+    width: 100rem;
+    margin-right: 2rem;
 }
 
 .package-h4{
@@ -531,7 +546,7 @@
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     margin: 2.5rem;
-    /* padding: 2.5rem; */
+    width: 80rem;
     background-color: rgba(16, 119, 215, 0.696);
     margin-left: 12rem;
     margin-right: 24rem;
@@ -595,6 +610,8 @@
     display: flex;
     padding: 3.2rem;
     background-color: rgba(210, 105, 30, 0.295);
+    margin-left: 4rem;
+    border-radius: 1rem;
 }
 
 .tour-links{
@@ -604,7 +621,9 @@
     margin-top: 2rem;
     margin-left: 10rem;
 }
-
+.container.grid.grid--3{
+    margin-left: 13rem;
+}
 .advert-text{
     margin-top: 2rem;
     font-size: 1.4rem;
@@ -641,217 +660,8 @@
     color: #333;
 }
 
-
-@media(max-width: 1386px){
-    .hero {
-        max-width: 120rem;
-        margin-left: 0.5rem;
-    }
-    .header{
-        width: 119rem;
-    }
-    .hero-section{
-        width: 119rem;
-    }
-    .main-nav{
-        max-width: 80rem;
-    }
-    .main-nav-list{
-        margin-right: 16rem;
-    }
+@media(max-width: 1300px){
     .account{
-        margin-right: 30rem;
-    }
-
-    .heading-primary {
-        font-size: 4.2rem;
-        line-height: 1.2;
-    }
-    .hero-description {
-        font-size: 1.7rem;
-    }
-
-    .btn {
-        margin-top: 1.7rem;
-        display: inline-block;
-    }
-
-    .subheading, .heading-secondary {
-        margin-left: 2rem;
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    .how-img{
-        height: 30rem;
-        width: 36rem;
-    }
-    .class-tertiary{
-        font-size: 2.6rem;
-        width: 30rem;
-        line-height: 1.4;
-    }
-    .step-description {
-        font-size: 1.2rem;
-        line-height: 2;
-        max-width: 30rem;
-        margin-left: 2rem;
-    }
-    .tours-h2{
-        font-size: 2.6rem;
-
-    }
-    .package-h4{
-        font-size: 3rem;
-    }
-    .customer-details{
-        display: inline-block;
-    }
-    .recommended-img{
-        height: 12rem;
-        margin-bottom: 1rem;
-    }
-    .reviewer-name {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-        margin-right: 1rem;
-    }
-    .reviewer-job{
-        margin: 0;
-        font-size: 1.4rem;
-    }
-    .reviewer-text{
-        margin-top: 1.5rem;
-        line-height: 1.8;
-        font-size: 1.5rem;
-        width: 20rem;
-    }
-    .travel-articles{
-        width: 119rem;
-        height: 65rem;
-    }
-    .article-info{
-        display: none;
-    }
-    .article-header{
-        font-size: 3.2rem;
-        margin-bottom: 5rem;
-    }
-    .btn-article{
-        font-size: 3rem;
-    }
-    .article-text{
-        margin-bottom: 2rem;
-        font-size: 1.6rem;
-    }
-    .links{
-        margin-bottom: 1rem;
-    }
-    .section-footer{
-        width: 119rem;
-    }
-}
-/* ////////////////////// */
-/*   TABLET BIG */
-/* ////////////////////// */
-@media(max-width: 1024px){
-    .recommended-img{
-        height: 15rem;
-        width: 20rem;
-    }
-}
-
-/* ////////////////////// */
-/*   TABLET */
-/* ////////////////////// */
-@media(max-width: 780px){
-    .newsletter{
-        width: 50rem;
-    }
-}
-/* ////////////////////// */
-/*   MOBILE */
-/* ////////////////////// */
-/* @media(max-width: 375px){
-    .header{
-        max-width: 119rem;
-    }
-    .recommended-packages.container, .client-reviews, .container.grid.grid--3{
-        max-width: 119rem;
-    }
-
-} */
-
-@media(max-width: 366px){
-    .header{
-        max-width: 103rem;
-        /* margin-left: 3rem; */
-    }
-    .how-img{
-        height: 23rem;
-        width: 33rem;
-        /* margin-left: 1rem; */
-    }
-
-    .hero-section{
-        max-width: 103rem;
-        /* margin-left: 3rem; */
-    }
-    .recommended-packages.container, .client-reviews{
-        max-width: 90rem;
-        /* margin-left: 4rem; */
-        margin-left: 2rem;
-        /* margin-left: 4rem; */
-    }
-    .container{
-        max-width: 103rem;
-    }
-    .tours-h2{
-        margin-left: 4rem;
-    }
-    .section-tours{
-        /* margin-left: 4rem; */
-        line-height: 1.2;
-    }
-    .container.grid.grid--3{
-        max-width: 100rem;
-        /* margin-left: 4rem; */
-    }
-    .tour-reviews{
-        max-width: 20rem;
-        gap: 2rem;
-    }
-    .tour-1, .tour-2{
-        max-width: 35rem;
-    }
-    .reviews-details.container.grid--4{
-        max-width: 80rem;
-        gap: 2rem;
-    }
-    .reviewer-text{
-        max-width: 18rem;
-    }
-    .travel-articles{
-        max-width: 95rem;
-        margin-left: 2rem;
-    }
-    .article-1, .article-2, .article-3{
-        max-width: 35rem;
-    }
-    .section-footer{
-        max-width: 99rem;
-        margin-left: 2rem;
-    }
-    .container.grid.grid--2.content-center.mg-top{
-        max-width: 100rem;
-    }
-    .step-text-box{
-        width: 30rem;
-    }
-    .how-img.mgn-down{
-        height: 23rem;
-        width: 29rem;
-    }
-    .main-nav{
-        max-width: 30rem;
+        margin-right: 15rem;
     }
 }

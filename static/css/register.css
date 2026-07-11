@@ -78,13 +78,5 @@ form input{
 /* ////////////////// */
 /* MEDIA QUERIES REGISTER */
 /* ///////////////// */
-@media(max-width: 1240px){
 
-    .map-img{
-        width: 33rem;
-        padding: 3rem;
-        margin-top: 10rem;
-        height: 33rem;
-    }
 
-}
